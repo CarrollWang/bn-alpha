@@ -1,5 +1,6 @@
 // 区块链监控服务
 import type { Hex } from 'viem'
+import type { TransactionAlertInfo } from '../types'
 import { createPublicClient, http, parseAbiItem } from 'viem'
 import { bsc } from 'viem/chains'
 import { emailService } from './email'
@@ -90,7 +91,7 @@ export class BlockchainMonitor {
         // 格式化转账金额
         const value = this.formatTokenAmount(log.args.value, tokenInfo.decimals)
 
-        const transaction = {
+        const transaction: TransactionAlertInfo = {
           hash: log.transactionHash,
           from: log.args.from,
           to: log.args.to,
@@ -128,10 +129,10 @@ export class BlockchainMonitor {
           tx.to?.toLowerCase() === config.address.toLowerCase() ||
           tx.from?.toLowerCase() === config.address.toLowerCase()
         ) {
-          const type = tx.to?.toLowerCase() === config.address.toLowerCase() ? 'incoming' : 'outgoing'
+          const type: 'incoming' | 'outgoing' = tx.to?.toLowerCase() === config.address.toLowerCase() ? 'incoming' : 'outgoing'
           
           if (tx.value > 0n) {
-            const transaction = {
+            const transaction: TransactionAlertInfo = {
               hash: tx.hash,
               from: tx.from,
               to: tx.to || '0x',

@@ -139,3 +139,13 @@ export interface Wallet {
   label: string
   disabled?: boolean
 }
+
+export interface TransactionAlertInfo {
+  hash: string
+  from: string
+  to: string
+  value: string
+  token: string
+  timestamp: string
+  type: 'incoming' | 'outgoing'
+}

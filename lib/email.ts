@@ -1,6 +1,8 @@
 // 邮件服务工具类
 // 支持多种邮件服务提供商
 
+import type { TransactionAlertInfo } from '../types'
+
 interface EmailConfig {
   provider: 'sendgrid' | 'ses' | 'smtp'
   apiKey?: string
@@ -31,15 +33,7 @@ export class EmailService {
   async sendTransactionAlert(
     to: string,
     walletLabel: string,
-    transaction: {
-      hash: string
-      from: string
-      to: string
-      value: string
-      token: string
-      timestamp: string
-      type: 'incoming' | 'outgoing'
-    }
+    transaction: TransactionAlertInfo
   ) {
     const template = this.generateTransactionTemplate(walletLabel, transaction)
     
@@ -51,7 +45,7 @@ export class EmailService {
     })
   }
 
-  private generateTransactionTemplate(walletLabel: string, transaction: any): EmailTemplate {
+  private generateTransactionTemplate(walletLabel: string, transaction: TransactionAlertInfo): EmailTemplate {
     const isIncoming = transaction.type === 'incoming'
     const direction = isIncoming ? '转入' : '转出'
     const emoji = isIncoming ? '📈' : '📉'
