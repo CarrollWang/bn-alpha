@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Activity, BarChart3, Coins, Menu, Wallet, X } from 'lucide-react'
+import { Activity, BarChart3, Bell, Coins, Menu, Wallet } from 'lucide-react'
 import { useState } from 'react'
 import { ThemeToggle } from '@/components/theme/theme-toggle'
 import { Button } from '@/components/ui/button'
@@ -19,6 +19,11 @@ const navigation = [
     name: '币安 Alpha',
     href: '/binance-alpha',
     icon: BarChart3,
+  },
+  {
+    name: '钱包监控',
+    href: '/wallet-monitor',
+    icon: Bell,
   },
   {
     name: 'DeFi 工具',
@@ -58,7 +63,7 @@ export default function Header() {
                   href={item.href}
                   className={cn(
                     'flex items-center space-x-2 text-sm font-medium transition-colors hover:text-primary',
-                    pathname === item.href
+                    pathname === item.href || pathname.startsWith(item.href + '/')
                       ? 'text-primary'
                       : 'text-muted-foreground'
                   )}
@@ -92,7 +97,7 @@ export default function Header() {
                         onClick={() => setMobileMenuOpen(false)}
                         className={cn(
                           'flex items-center space-x-3 text-sm font-medium transition-colors hover:text-primary p-2 rounded-md',
-                          pathname === item.href
+                          pathname === item.href || pathname.startsWith(item.href + '/')
                             ? 'text-primary bg-primary/10'
                             : 'text-muted-foreground hover:bg-muted'
                         )}

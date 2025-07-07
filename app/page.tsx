@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, BarChart3, Coins, Shield, TrendingUp, Wallet, Zap } from 'lucide-react'
+import { ArrowRight, BarChart3, Bell, Coins, Shield, TrendingUp, Wallet, Zap } from 'lucide-react'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 import { Button } from '@/components/ui/button'
@@ -15,6 +15,14 @@ const features = [
     bgColor: 'bg-blue-50 dark:bg-blue-950',
   },
   {
+    icon: Bell,
+    title: '钱包地址监控',
+    description: '实时监控钱包地址的代币转入转出，第一时间邮件通知',
+    href: '/wallet-monitor',
+    color: 'text-purple-600',
+    bgColor: 'bg-purple-50 dark:bg-purple-950',
+  },
+  {
     icon: Coins,
     title: 'DeFi 收益计算器',
     description: '计算流动性挖矿、质押收益，优化 DeFi 投资策略',
@@ -27,8 +35,8 @@ const features = [
     title: '钱包地址分析',
     description: '深度分析钱包地址的交易历史和资产分布',
     href: '/wallet-tools',
-    color: 'text-purple-600',
-    bgColor: 'bg-purple-50 dark:bg-purple-950',
+    color: 'text-orange-600',
+    bgColor: 'bg-orange-50 dark:bg-orange-950',
   },
   {
     icon: Shield,
@@ -43,16 +51,8 @@ const features = [
     title: '市场趋势分析',
     description: '实时市场数据分析，把握投资机会',
     href: '/market-analysis',
-    color: 'text-orange-600',
-    bgColor: 'bg-orange-50 dark:bg-orange-950',
-  },
-  {
-    icon: Zap,
-    title: 'Gas 费优化',
-    description: '实时 Gas 费监控，选择最佳交易时机',
-    href: '/gas-tracker',
-    color: 'text-yellow-600',
-    bgColor: 'bg-yellow-50 dark:bg-yellow-950',
+    color: 'text-indigo-600',
+    bgColor: 'bg-indigo-50 dark:bg-indigo-950',
   },
 ]
 
